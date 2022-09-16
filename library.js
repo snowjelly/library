@@ -6,16 +6,18 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function() {
+}
+
+Book.prototype.readState = function() {
+  this.readState = function() {
     if (read === true) {
       read = 'read';
     } else {
       read = 'not read yet';
     }
-    return title + ' by ' + author + ', ' + pages + ' pages, ' + read;
+    return read;
   }
 }
-
 
 function addBookToLibrary() {
   const newBook = Object.create(Book);
@@ -46,7 +48,7 @@ function addBookToLibrary() {
 
   const newBookRead = document.createElement('p');
   newBookRead.setAttribute('class', 'read');
-  newBookRead.textContent = newBook.read;
+  newBookRead.textContent = Book.prototype.readState();
   newBookDiv.appendChild(newBookRead);
 
   
