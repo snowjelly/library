@@ -44,9 +44,16 @@ function addBookToLibrary(event) {
   newBookRead.textContent = newBook.readStatus();
   newBookDiv.appendChild(newBookRead);
 
-  
+
   library.push(newBook);
 }
 
 const submitBtn = document.querySelector("button[type='button']");
 submitBtn.addEventListener('click', addBookToLibrary);
+
+const addBtn = document.querySelector('.add');
+addBtn.addEventListener('click', (event) => {
+  const form = document.querySelector('#form');
+  form.removeAttribute('class', 'collapse');
+  addBtn.remove();
+});
