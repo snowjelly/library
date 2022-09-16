@@ -9,18 +9,16 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.readState = function() {
-  this.readState = function() {
-    if (read === true) {
-      read = 'read';
+    if (this.read === true) {
+      this.read = 'read';
     } else {
-      read = 'not read yet';
+      this.read = 'not read yet';
     }
-    return read;
-  }
+    return this.read;
 }
 
 function addBookToLibrary() {
-  const newBook = Object.create(Book);
+  const newBook = Object.create(Book.prototype);
   newBook.title = "Harry Potter";
   newBook.author = 'Hatsune Miku';
   newBook.pages = 420;
@@ -48,7 +46,7 @@ function addBookToLibrary() {
 
   const newBookRead = document.createElement('p');
   newBookRead.setAttribute('class', 'read');
-  newBookRead.textContent = Book.prototype.readState();
+  newBookRead.textContent = newBook.readState();
   newBookDiv.appendChild(newBookRead);
 
   
