@@ -41,7 +41,7 @@ function addBookToLibrary() {
 
   const newBookPages = document.createElement('p');
   newBookPages.setAttribute('class', 'pages');
-  newBookPages.textContent = newBook.pages;
+  newBookPages.textContent = newBook.pages + 'p.g';
   newBookDiv.appendChild(newBookPages);
 
   const newBookRead = document.createElement('p');
