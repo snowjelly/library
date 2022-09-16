@@ -107,9 +107,10 @@ body {
   align-content: center;
   padding: 1rem;
   row-gap: 1rem;
+  font-size: 0.8rem;
 }
 
 .book-title {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   min-width: 0;
 }
