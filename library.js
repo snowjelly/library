@@ -8,22 +8,17 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.readState = function() {
-    if (this.read === true) {
-      this.read = 'read';
-    } else {
-      this.read = 'not read yet';
-    }
-    return this.read;
+Book.prototype.readStatus = function() {
+  if (this.read == 'true') return 'read';
+  return 'not read yet';
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(event) {
   const newBook = Object.create(Book.prototype);
-  newBook.title = "Harry Potter";
-  newBook.author = 'Hatsune Miku';
-  newBook.pages = 420;
-  newBook.read = true;
-
+  newBook.title = event.target.form[0].value;
+  newBook.author = event.target.form[1].value;
+  newBook.pages = event.target.form[2].value;
+  newBook.read = event.target.form[3].value;
 
   const newBookDiv = document.createElement('div');
   newBookDiv.setAttribute('class', 'book');
@@ -46,13 +41,12 @@ function addBookToLibrary() {
 
   const newBookRead = document.createElement('p');
   newBookRead.setAttribute('class', 'read');
-  newBookRead.textContent = newBook.readState();
+  newBookRead.textContent = newBook.readStatus();
   newBookDiv.appendChild(newBookRead);
 
   
-  
-  
-
   library.push(newBook);
 }
-addBookToLibrary();
+
+const submitBtn = document.querySelector("button[type='button']");
+submitBtn.addEventListener('click', addBookToLibrary);
