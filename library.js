@@ -55,5 +55,7 @@ const addBtn = document.querySelector('.add');
 addBtn.addEventListener('click', (event) => {
   const form = document.querySelector('#form');
   form.removeAttribute('class', 'collapse');
+  const forum = document.querySelector('.forum');
+  forum.setAttribute('class', 'forum add-forum-bg');
   addBtn.remove();
 });

@@ -17,7 +17,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font-family: 'Nunito', sans-serif;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -48,12 +47,19 @@ table {
 :root {
   --emerald-50: #ecfdf5;
   --emerald-400: #34d399;
+  --emerald-300: #6ee7b7;
+  --emerald-600: #0d9488;
+}
+
+* {
+  font-family: 'Nunito', sans-serif;
 }
 
 body {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 0.4fr;
+  grid-template-rows: min-content;
   gap: 1rem;
   background-color: var(--emerald-400);
 }
@@ -74,14 +80,9 @@ body {
   flex-direction: column;
   padding: 2rem;
   border-radius: 2rem;
-  background-color: var(--emerald-50);
   gap: 1rem;
   justify-content: center;
   margin: 3rem;
-}
-
-.forum button {
-  flex: 1;
 }
 
 .library {
@@ -105,6 +106,7 @@ body {
   padding: 1rem;
   row-gap: 1rem;
   font-size: 0.8rem;
+  color: var(--emerald-50);
 }
 
 .book-title {
@@ -112,6 +114,20 @@ body {
   min-width: 0;
 }
 
+.add {
+  font-size: 2rem;
+  font-weight: 700;
+  background-color: var(--emerald-600);
+  color: var(--emerald-50);
+  border-radius: 2rem;
+  border: 0;
+  flex: 1;
+}
+
 form.collapse {
   visibility: collapse;
+}
+
+.add-forum-bg {
+  background-color: var(--emerald-50);
 }
