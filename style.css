@@ -131,3 +131,11 @@ form.collapse {
 .add-forum-bg {
   background-color: var(--emerald-50);
 }
+
+.remove-book-btn {
+  border: 0;
+  border-radius: 2rem;
+  background-color: var(--emerald-600);
+  color: var(--emerald-50);
+  font-size: 1.1rem;
+}

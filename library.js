@@ -44,6 +44,11 @@ function addBookToLibrary(event) {
   newBookRead.textContent = newBook.readStatus();
   newBookDiv.appendChild(newBookRead);
 
+  const newBookRemoveBtn = document.createElement('button');
+  newBookRemoveBtn.setAttribute('class', 'remove-book-btn');
+  newBookRemoveBtn.textContent = 'Remove';
+  newBookDiv.appendChild(newBookRemoveBtn);
+
 
   library.push(newBook);
 }
