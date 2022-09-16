@@ -17,5 +17,6 @@ function Book(title, author, pages, read) {
 
 
 function addBookToLibrary() {
+  const newBookDiv = document.createElement('div');
   
 }
