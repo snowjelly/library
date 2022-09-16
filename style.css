@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+h2, h3, h4, h5, h6, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: 'Nunito', sans-serif;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*--- CSS reset ---*/
+
+:root {
+  --emerald-50: #ecfdf5;
+  --emerald-400: #34d399;
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background-color: var(--emerald-400);
+}
+
+.title {
+  justify-self: center;
+  grid-column: span 2;
+}
+
+.forum > form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.forum {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 2rem;
+  background-color: var(--emerald-50);
+  gap: 1rem;
+  margin: 3rem;
+}
+
+.forum button {
+  flex: 1;
+}
+
+.add:active ~ form {
+  visibility: visible;
+}
+
+.library {
+  background-color: var(--emerald-50);
+  border-radius: 2rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+  grid-template-rows: auto 1fr 1fr;
+  gap: 1rem;
+  justify-content: space-evenly;
+  margin: 3rem;
+}
+
+.book {
+  background-color: #064e3b;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
+  grid-template-rows: repeat(4, min-content);
+  gap: 2rem;  
+}
+
+.book-title {
+  font-size: 1.3rem;
+}

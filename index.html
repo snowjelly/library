@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="library.js" defer></script>
+  <title>Library</title>
+</head>
+<body>
+  <h1 class="title">Library</h1>
+  <div class="library">
+    <div class="book">
+      <h4 class="book-title">Book Title</h6>
+      <h5 class="author">Author</h5>
+      <p class="pages">256</p>
+      <p class="read">unread</p>
+    </div>
+    <div class="book">
+      <h4 class="book-title">Book Title</h6>
+        <h5 class="author">Author</h5>
+        <p class="pages">256</p>
+        <p class="read">unread</p>
+    </div>
+    <div class="book">
+      <h4 class="book-title">Book Title</h6>
+        <h5 class="author">Author</h5>
+        <p class="pages">256</p>
+        <p class="read">unread</p>
+    </div>
+  </div>
+  <div class="forum">
+    <form action="post">
+      <label for="title">Title</label>
+      <input name="title" id="title" type="text">
+      <label for="author">Author</label>
+      <input name="author" id="author" type="text">
+      <label for="pages">Pages</label>
+      <input name="pages" id="pages" type="text" pattern="[0-9]*" required>
+      <label for="read">Read</label>
+      <select name="read" id="read">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <button class="add">Add book to library</button>
+  </div>
+</body>
+</html>
