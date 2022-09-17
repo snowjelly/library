@@ -19,6 +19,7 @@ function addBookToLibrary(event) {
   newBook.author = event.target.form[1].value;
   newBook.pages = event.target.form[2].value;
   newBook.read = event.target.form[3].value;
+  newBook.id = library.length;
 
   library.push(newBook);
   displayLibrary();
@@ -45,7 +46,7 @@ function displayLibrary() {
     const newBookPages = document.createElement('p');
     newBookPages.setAttribute('class', 'pages');
     newBookPages.textContent = library[i].pages + 'p.g';
-    newBookDiv.appendChild(newBookPages);
+    newBookDiv.appendChild(newBookPages); 
   
     const newBookRead = document.createElement('p');
     newBookRead.setAttribute('class', 'read');
@@ -56,6 +57,8 @@ function displayLibrary() {
     newBookRemoveBtn.setAttribute('class', 'remove-book-btn');
     newBookRemoveBtn.textContent = 'Remove';
     newBookDiv.appendChild(newBookRemoveBtn);
+
+    newBookRemoveBtn.addEventListener('click', removeBook);
     }
 }
 
@@ -67,6 +70,16 @@ function clearLibrary() {
   }
 }
 
+function removeBook(event) {
+  library = library.filter(function (element) { return element.id != event.target.parentElement.id});
+  displayLibrary();
+}
+
+function createRemoveBookBtnEventListeners() {
+  for (i = 0; i < library.length; i++) {
+  const removeBtn = document.querySelector('.remove-book-btn');
+  }
+}
 const submitBtn = document.querySelector("button[type='button']");
 submitBtn.addEventListener('click', addBookToLibrary);
 
