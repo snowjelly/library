@@ -20,43 +20,58 @@ function addBookToLibrary(event) {
   newBook.pages = event.target.form[2].value;
   newBook.read = event.target.form[3].value;
 
-  const newBookDiv = document.createElement('div');
-  newBookDiv.setAttribute('class', 'book');
-  libraryDiv.appendChild(newBookDiv);
-
-  const newBookTitle = document.createElement('h4');
-  newBookTitle.setAttribute('class', 'book-title');
-  newBookTitle.textContent = newBook.title;
-  newBookDiv.appendChild(newBookTitle);
-
-  const newBookAuthor = document.createElement('h5');
-  newBookAuthor.setAttribute('class', 'author');
-  newBookAuthor.textContent = newBook.author;
-  newBookDiv.appendChild(newBookAuthor);
-
-  const newBookPages = document.createElement('p');
-  newBookPages.setAttribute('class', 'pages');
-  newBookPages.textContent = newBook.pages + 'p.g';
-  newBookDiv.appendChild(newBookPages);
-
-  const newBookRead = document.createElement('p');
-  newBookRead.setAttribute('class', 'read');
-  newBookRead.textContent = newBook.readStatus();
-  newBookDiv.appendChild(newBookRead);
-
-  const newBookRemoveBtn = document.createElement('button');
-  newBookRemoveBtn.setAttribute('class', 'remove-book-btn');
-  newBookRemoveBtn.textContent = 'Remove';
-  newBookDiv.appendChild(newBookRemoveBtn);
-
-
   library.push(newBook);
+  displayLibrary();
+}
+
+function displayLibrary() {
+
+  for (i = 0; i < library.length; i++) {
+    const delBook = document.getElementById(i.toString());
+    if (delBook === null) break;
+    delBook.remove();
+    console.log('swag');  
+  }
+
+
+  for (i = 0; i < library.length; i++) {
+    const newBookDiv = document.createElement('div');
+    newBookDiv.setAttribute('class', 'book');
+    newBookDiv.setAttribute('id', i.toString());
+    libraryDiv.appendChild(newBookDiv);
+  
+    const newBookTitle = document.createElement('h4');
+    newBookTitle.setAttribute('class', 'book-title');
+    newBookTitle.textContent = library[i].title;
+    newBookDiv.appendChild(newBookTitle);
+  
+    const newBookAuthor = document.createElement('h5');
+    newBookAuthor.setAttribute('class', 'author');
+    newBookAuthor.textContent = library[i].author;
+    newBookDiv.appendChild(newBookAuthor);
+  
+    const newBookPages = document.createElement('p');
+    newBookPages.setAttribute('class', 'pages');
+    newBookPages.textContent = library[i].pages + 'p.g';
+    newBookDiv.appendChild(newBookPages);
+  
+    const newBookRead = document.createElement('p');
+    newBookRead.setAttribute('class', 'read');
+    newBookRead.textContent = library[i].readStatus();
+    newBookDiv.appendChild(newBookRead);
+  
+    const newBookRemoveBtn = document.createElement('button');
+    newBookRemoveBtn.setAttribute('class', 'remove-book-btn');
+    newBookRemoveBtn.textContent = 'Remove';
+    newBookDiv.appendChild(newBookRemoveBtn);
+    }
 }
 
 const submitBtn = document.querySelector("button[type='button']");
 submitBtn.addEventListener('click', addBookToLibrary);
 
 const addBtn = document.querySelector('.add');
+
 addBtn.addEventListener('click', (event) => {
   const form = document.querySelector('#form');
   form.removeAttribute('class', 'collapse');
