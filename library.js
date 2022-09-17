@@ -8,11 +8,23 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.readStatus = function() {
+Book.prototype.printReadStatus = function() {
   if (this.read == 'true') return 'read';
   return 'not read yet';
 }
 
+Book.prototype.toggleReadStatus = function() {
+  const thisBook = this.parentElement;
+  const thisBookReadStatus = thisBook.children[3];
+  if (library[thisBook.id].read == 'true') {
+    library[thisBook.id].read = 'false';
+    thisBookReadStatus.textContent = library[thisBook.id].printReadStatus();
+  }
+  else {
+    library[thisBook.id].read = 'true';
+    thisBookReadStatus.textContent = library[thisBook.id].printReadStatus();
+  }
+}
 function addBookToLibrary(event) {
   const newBook = Object.create(Book.prototype);
   newBook.title = event.target.form[0].value;
@@ -50,9 +62,16 @@ function displayLibrary() {
   
     const newBookRead = document.createElement('p');
     newBookRead.setAttribute('class', 'read');
-    newBookRead.textContent = library[i].readStatus();
+    newBookRead.textContent = library[i].printReadStatus();
     newBookDiv.appendChild(newBookRead);
   
+    const newBookToggleReadStatusBtn = document.createElement('button');
+    newBookToggleReadStatusBtn.setAttribute('class', 'toggle-read-status-btn');
+    newBookToggleReadStatusBtn.textContent = 'Read';
+    newBookDiv.appendChild(newBookToggleReadStatusBtn);
+
+    newBookToggleReadStatusBtn.addEventListener('click', library[i].toggleReadStatus);
+
     const newBookRemoveBtn = document.createElement('button');
     newBookRemoveBtn.setAttribute('class', 'remove-book-btn');
     newBookRemoveBtn.textContent = 'Remove';
