@@ -25,15 +25,7 @@ function addBookToLibrary(event) {
 }
 
 function displayLibrary() {
-
-  for (i = 0; i < library.length; i++) {
-    const delBook = document.getElementById(i.toString());
-    if (delBook === null) break;
-    delBook.remove();
-    console.log('swag');  
-  }
-
-
+  clearLibrary();
   for (i = 0; i < library.length; i++) {
     const newBookDiv = document.createElement('div');
     newBookDiv.setAttribute('class', 'book');
@@ -65,6 +57,14 @@ function displayLibrary() {
     newBookRemoveBtn.textContent = 'Remove';
     newBookDiv.appendChild(newBookRemoveBtn);
     }
+}
+
+function clearLibrary() {
+  for (i = 0; i < library.length; i++) {
+    const delBook = document.getElementById(i.toString());
+    if (delBook === null) break;
+    delBook.remove();
+  }
 }
 
 const submitBtn = document.querySelector("button[type='button']");
