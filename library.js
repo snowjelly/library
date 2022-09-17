@@ -72,14 +72,9 @@ function clearLibrary() {
 
 function removeBook(event) {
   library = library.filter(function (element) { return element.id != event.target.parentElement.id});
-  displayLibrary();
+  event.target.parentElement.remove();
 }
 
-function createRemoveBookBtnEventListeners() {
-  for (i = 0; i < library.length; i++) {
-  const removeBtn = document.querySelector('.remove-book-btn');
-  }
-}
 const submitBtn = document.querySelector("button[type='button']");
 submitBtn.addEventListener('click', addBookToLibrary);
 
