@@ -49,6 +49,7 @@ table {
   --emerald-400: #34d399;
   --emerald-300: #6ee7b7;
   --emerald-600: #0d9488;
+  --rose-600: #e11d48;
 }
 
 * {
@@ -133,6 +134,14 @@ form.collapse {
 }
 
 .remove-book-btn {
+  border: 0;
+  border-radius: 2rem;
+  background-color: var(--rose-600);
+  color: var(--emerald-50);
+  font-size: 1.1rem;
+}
+
+.toggle-read-status-btn {
   border: 0;
   border-radius: 2rem;
   background-color: var(--emerald-600);
