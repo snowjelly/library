@@ -47,9 +47,9 @@ table {
 :root {
   --emerald-50: #ecfdf5;
   --emerald-400: #34d399;
-  --emerald-300: #6ee7b7;
   --emerald-600: #0d9488;
   --rose-600: #e11d48;
+  --pink-400: #f472b6;
 }
 
 * {
@@ -144,7 +144,14 @@ form.collapse {
 .toggle-read-status-btn {
   border: 0;
   border-radius: 2rem;
-  background-color: var(--emerald-600);
   color: var(--emerald-50);
   font-size: 1.1rem;
+}
+
+.Read {
+  background-color: var(--emerald-600);
+}
+
+.Unread {
+  background-color: #f472b6;
 }
