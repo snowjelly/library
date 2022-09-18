@@ -18,8 +18,8 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.printReadStatus = function() {
-  if (this.read == 'true') return 'read';
-  return ('not read yet');
+  if (this.read == 'true') return 'Read';
+  return ('Unread');
 }
 
 Book.prototype.toggleReadStatus = function() {
@@ -55,8 +55,7 @@ function displayLibrary() {
     <h4 class="book-title">${library[i].title}</h4>
     <h5 class="author">${library[i].author}</h5>
     <p class="pages">${library[i].pages}p.g</p>
-    <p class="read">${library[i].printReadStatus()}</p>
-    <button class="toggle-read-status-btn">Read</button>
+    <button class="toggle-read-status-btn">${library[i].printReadStatus()}</button>
     <button class="remove-book-btn">Remove</button>
     `;
 
@@ -64,7 +63,7 @@ function displayLibrary() {
     selectBook.addEventListener('click', (event) => {
       if (event.target.classList.contains('toggle-read-status-btn')) {
         library[event.target.parentElement.id].toggleReadStatus();
-        event.target.parentElement.children[3].textContent = library[event.target.parentElement.id].printReadStatus();
+        event.target.textContent = library[event.target.parentElement.id].printReadStatus();
       }
       if (event.target.classList.contains('remove-book-btn')) {
         removeBook(event);
