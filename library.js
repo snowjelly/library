@@ -7,6 +7,7 @@ const $read = document.querySelector('#read');
 const $form = document.querySelector('form').addEventListener('submit', (event) => {
   event.preventDefault();
   addBookToLibrary();
+  clearForm();
 });
 
 
@@ -79,6 +80,12 @@ function clearLibrary() {
     if (delBook === null) break;
     delBook.remove();
   }
+}
+
+function clearForm() {
+  $title.value = '';
+  $author.value = '';
+  $pages.value = '';
 }
 
 function removeBook(event) {
