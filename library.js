@@ -82,13 +82,13 @@ function clearLibrary() {
 }
 
 function removeBook(event) {
-  library = library.filter(function (element) { return element.id != event.target.parentElement.id});
+  library = library.filter(function (bookObject) { return bookObject.id != event.target.parentElement.id});
   event.target.parentElement.remove();
 }
 
 const addBtn = document.querySelector('.add');
 
-addBtn.addEventListener('click', (event) => {
+addBtn.addEventListener('click', () => {
   const form = document.querySelector('#form');
   form.removeAttribute('class', 'collapse');
   const forum = document.querySelector('.forum');
