@@ -1,5 +1,14 @@
 let library = [];
 const libraryDiv = document.querySelector('.library');
+const $title = document.querySelector('#title');
+const $author = document.querySelector("#author");
+const $pages = document.querySelector("#pages");
+const $read = document.querySelector('#read');
+const $form = document.querySelector('form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  addBookToLibrary();
+});
+
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -10,27 +19,24 @@ function Book(title, author, pages, read) {
 
 Book.prototype.printReadStatus = function() {
   if (this.read == 'true') return 'read';
-  return 'not read yet';
+  return ('not read yet');
 }
 
 Book.prototype.toggleReadStatus = function() {
-  const thisBook = this.parentElement;
-  const thisBookReadStatus = thisBook.children[3];
-  if (library[thisBook.id].read == 'true') {
-    library[thisBook.id].read = 'false';
-    thisBookReadStatus.textContent = library[thisBook.id].printReadStatus();
+  if (this.read == 'true') {
+    this.read = 'false';
   }
-  else {
-    library[thisBook.id].read = 'true';
-    thisBookReadStatus.textContent = library[thisBook.id].printReadStatus();
+  else if (this.read == 'false') {
+    this.read = 'true';
   }
 }
-function addBookToLibrary(event) {
+
+function addBookToLibrary() {
   const newBook = Object.create(Book.prototype);
-  newBook.title = event.target.form[0].value;
-  newBook.author = event.target.form[1].value;
-  newBook.pages = event.target.form[2].value;
-  newBook.read = event.target.form[3].value;
+  newBook.title = $title.value;
+  newBook.author = $author.value;
+  newBook.pages = $pages.value;
+  newBook.read = $read.value;
   newBook.id = library.length;
 
   library.push(newBook);
@@ -44,41 +50,24 @@ function displayLibrary() {
     newBookDiv.setAttribute('class', 'book');
     newBookDiv.setAttribute('id', i.toString());
     libraryDiv.appendChild(newBookDiv);
-  
-    const newBookTitle = document.createElement('h4');
-    newBookTitle.setAttribute('class', 'book-title');
-    newBookTitle.textContent = library[i].title;
-    newBookDiv.appendChild(newBookTitle);
-  
-    const newBookAuthor = document.createElement('h5');
-    newBookAuthor.setAttribute('class', 'author');
-    newBookAuthor.textContent = library[i].author;
-    newBookDiv.appendChild(newBookAuthor);
-  
-    const newBookPages = document.createElement('p');
-    newBookPages.setAttribute('class', 'pages');
-    newBookPages.textContent = library[i].pages + 'p.g';
-    newBookDiv.appendChild(newBookPages); 
-  
-    const newBookRead = document.createElement('p');
-    newBookRead.setAttribute('class', 'read');
-    newBookRead.textContent = library[i].printReadStatus();
-    newBookDiv.appendChild(newBookRead);
-  
-    const newBookToggleReadStatusBtn = document.createElement('button');
-    newBookToggleReadStatusBtn.setAttribute('class', 'toggle-read-status-btn');
-    newBookToggleReadStatusBtn.textContent = 'Read';
-    newBookDiv.appendChild(newBookToggleReadStatusBtn);
 
-    newBookToggleReadStatusBtn.addEventListener('click', library[i].toggleReadStatus);
+    newBookDiv.innerHTML = `
+    <h4 class="book-title">${library[i].title}</h4>
+    <h5 class="author">${library[i].author}</h5>
+    <p class="pages">${library[i].pages}p.g</p>
+    <p class="read">${library[i].printReadStatus()}</p>
+    <button class="toggle-read-status-btn">Read</button>
+    <button class="remove-book-btn">Remove</button>
+    `;
 
-    const newBookRemoveBtn = document.createElement('button');
-    newBookRemoveBtn.setAttribute('class', 'remove-book-btn');
-    newBookRemoveBtn.textContent = 'Remove';
-    newBookDiv.appendChild(newBookRemoveBtn);
-
-    newBookRemoveBtn.addEventListener('click', removeBook);
-    }
+    const selectBook = document.getElementById(i);
+    selectBook.addEventListener('click', (event) => {
+      if (event.target.classList.contains('toggle-read-status-btn')) {
+        library[event.target.parentElement.id].toggleReadStatus();
+        event.target.parentElement.children[3].textContent = library[event.target.parentElement.id].printReadStatus();
+      }
+    });
+  }
 }
 
 function clearLibrary() {
@@ -90,12 +79,10 @@ function clearLibrary() {
 }
 
 function removeBook(event) {
+  console.log(event.target);
   library = library.filter(function (element) { return element.id != event.target.parentElement.id});
   event.target.parentElement.remove();
 }
-
-const submitBtn = document.querySelector("button[type='button']");
-submitBtn.addEventListener('click', addBookToLibrary);
 
 const addBtn = document.querySelector('.add');
 
