@@ -66,6 +66,9 @@ function displayLibrary() {
         library[event.target.parentElement.id].toggleReadStatus();
         event.target.parentElement.children[3].textContent = library[event.target.parentElement.id].printReadStatus();
       }
+      if (event.target.classList.contains('remove-book-btn')) {
+        removeBook(event);
+      }
     });
   }
 }
@@ -79,7 +82,6 @@ function clearLibrary() {
 }
 
 function removeBook(event) {
-  console.log(event.target);
   library = library.filter(function (element) { return element.id != event.target.parentElement.id});
   event.target.parentElement.remove();
 }
