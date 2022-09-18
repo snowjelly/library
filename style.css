@@ -146,6 +146,7 @@ form.collapse {
   border-radius: 2rem;
   color: var(--emerald-50);
   font-size: 1.1rem;
+  transition: 0.5s;
 }
 
 .Read {
@@ -153,5 +154,5 @@ form.collapse {
 }
 
 .Unread {
-  background-color: #f472b6;
+  background-color: var(--pink-400);
 }
