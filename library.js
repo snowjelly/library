@@ -11,35 +11,37 @@ const $form = document.querySelector('form').addEventListener('submit', (event) 
 });
 
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read, id) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = id;
+  }
+
+  printReadStatus () {
+    if (this.read == 'true') return 'Read';
+    return 'Unread';
+  }
+
+  toggleReadStatus () {
+    if (this.read == 'true') {
+      this.read = 'false';
+    }
+    else if (this.read == 'false') {
+      this.read = 'true';
+    }
+  }
+
 }
 
-Book.prototype.printReadStatus = function() {
-  if (this.read == 'true') return 'Read';
-  return 'Unread';
-}
 
-Book.prototype.toggleReadStatus = function() {
-  if (this.read == 'true') {
-    this.read = 'false';
-  }
-  else if (this.read == 'false') {
-    this.read = 'true';
-  }
-}
+
+
 
 function addBookToLibrary() {
-  const newBook = Object.create(Book.prototype);
-  newBook.title = $title.value;
-  newBook.author = $author.value;
-  newBook.pages = $pages.value;
-  newBook.read = $read.value;
-  newBook.id = library.length;
-
+  const newBook = new Book($title.value, $author.value, $pages.value, $read.value, library.length);
   library.push(newBook);
   displayLibrary();
 }
